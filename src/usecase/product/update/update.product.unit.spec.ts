@@ -5,8 +5,14 @@ const product = ProductFactory.create("a", "Product Test", 9.99);
 
 const input = {
     id: product.id,
-    name: product.name,
+    name: "Product 2 Test",
     price: product.price,
+};
+
+const output_mock= {
+  id: product.id,
+  name: "Product 2 Test",
+  price: product.price,
 };
 
 const MockRepository = () => {
@@ -14,7 +20,7 @@ const MockRepository = () => {
       create: jest.fn(),
       findAll: jest.fn(),
       find: jest.fn().mockReturnValue(Promise.resolve(product)),
-      update: jest.fn(),
+      update: jest.fn().mockReturnValue(Promise.resolve(output_mock)),
     };
   };
 
